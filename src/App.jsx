@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import LemonadeStand from './lemonade'
+import LemonadeStand from './LemonadeStand'
 import './App.css'
 
 function App() {
   return (
     <>
       <div className="App">
-      <LemonadeStand />
-    </div>
+        <LemonadeStand />
+      </div>
     </>
   )
 }
