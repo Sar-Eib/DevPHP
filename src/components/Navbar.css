@@ -1,0 +1,137 @@
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #646cff;
+}
+
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart-container {
+  position: relative;
+  text-decoration: none;
+}
+.cart-badge {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  background-color: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  border: 2px solid #333;
+}
+
+.floating-cart-fab {
+  display: none;
+}
+
+/* RESPONSIVE DESIGN (< 768px) */
+@media (max-width: 768px) {
+  
+  /* Vis FAB knappen */
+  .floating-cart-fab {
+    display: flex;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #646cff; /* En farve der popper */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 2000;
+    text-decoration: none;
+    color: white;
+  }
+
+  .floating-cart-fab .cart-icon {
+    font-size: 1.8rem;
+  }
+
+  /* Speciel styling til tallet på FAB'en */
+  .cart-badge-fab {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 2px solid white;
+  }
+
+  /* Dine eksisterende burgermenu-indstillinger herunder... */
+  .burger-menu {
+    display: block;
+  }
+
+  .nav-links {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px; /* Juster så den passer med din navbars højde */
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 20px 0;
+  z-index: 1500; /* Tilføj denne, så den ligger over siden, men under FAB */
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3); /* Valgfrit: giver en flot skygge når menuen er åben */
+}
+
+  .nav-links.open {
+    display: flex;
+  }
+}
