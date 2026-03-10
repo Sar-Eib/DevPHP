@@ -1,0 +1,130 @@
+.shop-container {/* Øget lidt for at give plads til 5 kolonner */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.shop-title {
+  margin-bottom: 100px;
+  margin-left: 50px;
+  position: relative;
+  
+}
+.shop-title img {
+    height: 120px;
+    position: absolute;
+    top: -12px;
+    left: -8px;
+}
+
+.shop-title h1 {
+  position: relative;
+  z-index: 10;
+  font-size: 2rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* GRID SETUP */
+.shop-grid {
+margin-top: 70px;
+  margin: 50px;
+  display: grid;
+  gap: 20px;
+  
+  /* Standard: 1 kolonne (Mobil under 500px) */
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* 2 kolonner (Fra 500px og op) */
+@media (min-width: 500px) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 kolonner (Fra 768px og op) */
+@media (min-width: 768px) {
+  .shop-grid {
+    margin: 80px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .shop-title {
+    margin: 80px;
+  }
+}
+
+/* 4 kolonner (Fra 992px og op) */
+@media (min-width: 992px) {
+  .shop-grid {
+    margin: 80px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .shop-title {
+    margin: 80px;
+  }
+}
+
+/* 5 kolonner (Fra 1200px og op - Desktop) */
+@media (min-width: 1200px) {
+  .shop-grid {
+    margin: 100px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .shop-title {
+    margin: 100px;
+  }
+}
+
+.drink-card {
+  background-color: #fff6d4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.drink-image {
+  width: 100%;
+  max-height: 150px;
+  aspect-ratio: 1 / 1; /* Gør billederne helt kvadratiske */
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.drink-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.drink-name {
+  color: #333;
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  min-height: 2.5rem;
+}
+
+.add-button {
+  background-color: #6ab734;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: auto;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #3f701c;
+}
+
+/* Knappen må gerne have en lille tryk-effekt, 
+   men selve kortet bevæger sig ikke længere */
+.add-button:active {
+  transform: scale(0.95);
+}

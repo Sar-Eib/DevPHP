@@ -6,6 +6,11 @@
   color-scheme: light dark;
   background-color: #242424;
   color: rgba(255, 255, 255, 0.87);
+  background-image: linear-gradient(rgba(187, 187, 187, 0.445), rgba(221, 221, 221, 0.473)), url('../images/lemons.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

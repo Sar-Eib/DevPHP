@@ -8,7 +8,7 @@ function LemonadeStand() {
 
   return (
     <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
-      <h1>🍋 Lemonade Stand (Router)</h1>
+      <img style={{ height: '200px' }} src="../images/lemonslogo.png" alt="" />
       
       <h2>Aktuel Profit: ${profit}</h2>
 

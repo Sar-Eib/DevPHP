@@ -1,10 +1,10 @@
 .navbar {
-  background-color: #333;
+  background-color: #67ab31;
   color: white;
-  padding: 1rem;
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding: 0 30px;
 }
 
 .nav-container {
@@ -14,16 +14,12 @@
 }
 
 .logo {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.2rem;
+  padding: 5px;
 }
 
 .nav-links {
   display: flex;
   gap: 25px;
-  align-items: center;
 }
 
 .nav-link {
@@ -33,7 +29,7 @@
 }
 
 .nav-link:hover {
-  color: #646cff;
+  color: #ffe762;
 }
 
 .burger-menu {
@@ -48,14 +44,13 @@
 
 .cart-container {
   position: relative;
-  text-decoration: none;
 }
 .cart-badge {
   position: absolute;
   top: -10px;
   right: -15px;
-  background-color: #ff4444;
-  color: white;
+  background-color: #ede363;
+  color: #5b8f38;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -63,7 +58,7 @@
   justify-content: center;
   align-items: center;
   font-size: 0.7rem;
-  border: 2px solid #333;
+  border: 2px solid #bbe99d;
 }
 
 .floating-cart-fab {
@@ -79,7 +74,7 @@
     position: fixed;
     bottom: 25px;
     right: 25px;
-    background-color: #646cff; /* En farve der popper */
+    background-color: #67ab31; /* En farve der popper */
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -100,8 +95,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #ff4444;
-    color: white;
+    background-color: #ede363;
+    color: #5b8f38;
     border-radius: 50%;
     width: 22px;
     height: 22px;
@@ -110,7 +105,7 @@
     align-items: center;
     font-size: 0.75rem;
     font-weight: bold;
-    border: 2px solid white;
+    border: 2px solid #bbe99d;
   }
 
   /* Dine eksisterende burgermenu-indstillinger herunder... */
