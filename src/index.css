@@ -9,7 +9,7 @@
   color-scheme: light dark;
   background-color: #000000;
   color: rgba(255, 255, 255, 0.87);
-  background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.781)), url(vinyl-disc.png);
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.781)), url(../vinyl-disc.png);
   background-repeat: repeat;
   background-position: top;
   background-size: 200px;
@@ -20,11 +20,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Sørg for at body fylder hele skærmen uden at centrere indholdet i en lille boks */
 body {
   margin: 0;
   padding: 0;
-  display: block; /* Vigtigt: Fjernet 'flex' og 'place-items' */
+  display: block;
   
 }
 
