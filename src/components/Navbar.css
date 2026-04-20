@@ -130,3 +130,61 @@
     display: flex;
   }
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Selve den skjulte menu */
+.dropdown-menu {
+  display: none; /* Skjult som standard */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ecee72;
+  min-width: 150px;
+  
+  z-index: 10;
+  border-radius: 4px;
+  padding: 10px 0;
+}
+
+/* Links inde i dropdown */
+.dropdown-menu a {
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+  color: #ff6600; /* Din orange farve */
+}
+
+/* Vis menuen når man hovrer over dropdown-containeren (kun desktop) */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* Mobil-tilpasning */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static; /* Gør den til en del af den lodrette liste på mobil */
+    display: block; /* Vis den altid på mobil eller styr den med en klik-state */
+    box-shadow: none;
+    background-color: transparent;
+    padding-left: 20px;
+    border-left: 2px solid #ff6600;
+    margin-bottom: 10px;
+  }
+  
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+  }
+}

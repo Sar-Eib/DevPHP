@@ -81,7 +81,7 @@
 
 .add-button {
   background-color: #ecee72;
-  background-image: url(../images/cart-shopping-solid-full-black.svg);
+  background-image: url(cart-shopping-solid-full-black.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px;
@@ -129,7 +129,7 @@
 
 .add-button:hover {
   background-color: #000000;
-  background-image: url(../images/cart-shopping-solid-full.svg);
+  background-image: url(cart-shopping-solid-full.svg);
 }
 
 /* Knappen må gerne have en lille tryk-effekt, 
