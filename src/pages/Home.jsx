@@ -1,21 +1,30 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { sellLemonade, buyLemons } from '../redux/profitSlice';
-
-function LemonadeStand() {
-  const profit = useSelector((state) => state.profit.value);
-  
-  const dispatch = useDispatch();
+function Discover() {
 
   return (
-    <div>
-      <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
-        <img style={{ height: '100px' }} src="../logo-disc.png" alt="" />
+    <div className="discover-container">
+      {/* Centreret Logo */}
+      <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+        {/* Bruger absolut sti fra public mappen */}
+        <img 
+          style={{ height: '150px', marginBottom: '20px' }} 
+          src="/logo-disc.png" 
+          alt="Discover Logo" 
+        />
+        <h1>Velkommen til Discover</h1>
+        <p>Udforsk vores univers</p>
       </div>
-      <div>
 
+      {/* Knapper uden funktioner (bare design) */}
+      <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
+        <button className="button">
+          Se Produkter
+        </button>
+        <button className="button">
+          Om Os
+        </button>
       </div>
     </div>
   );
 }
 
-export default LemonadeStand;
+export default Discover;
