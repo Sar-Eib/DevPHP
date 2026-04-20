@@ -9,7 +9,7 @@ function LemonadeStand() {
   return (
     <div>
       <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
-        <img style={{ height: '100px' }} src="../images/logo-disc.png" alt="" />
+        <img style={{ height: '100px' }} src="/logo-disc.png" alt="" />
       </div>
       <div>
 

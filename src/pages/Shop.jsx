@@ -17,7 +17,7 @@ export default function Shop() {
     
     <div className="shop-container">
       <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
-        <img style={{ height: '100px' }} src="logo-disc.png" alt="Discover logo" />
+        <img style={{ height: '100px' }} src="/logo-disc.png" alt="Discover logo" />
       </div>
       <div className="shop-title">
           <h1 >DVD'er</h1>
