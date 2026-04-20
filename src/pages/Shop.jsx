@@ -14,33 +14,49 @@ export default function Shop() {
   }, []);
 
   return (
+    
     <div className="shop-container">
-        <div className="shop-title">
-            <h1 >Drinks</h1>
-            <img src="../images/lemonleaf.png" alt="leaf for decoration" />
-        </div>
+      <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
+        <img style={{ height: '100px' }} src="../images/logo-disc.png" alt="Discover logo" />
+      </div>
+      <div className="shop-title">
+          <h1 >DVD'er</h1>
+      </div>
       
       
-      <div className="shop-grid">
+      <div>
+        <div className="shop-grid">
         {drinks.map(drink => (
-          <div key={drink.idDrink} className="drink-card">
+          <div key={drink.idDrink} className="product-card">
             <img 
               src={drink.strDrinkThumb} 
               alt={drink.strDrink} 
-              className="drink-image" 
+              className="product-image" 
             />
             
-            <div className="drink-info">
-              <h3 className="drink-name">{drink.strDrink}</h3>
-              <button 
-                className="add-button"
-                onClick={() => dispatch(addToCart(drink))}
-              >
-                Tilføj til kurv
-              </button>
+            <div className="product-info">
+              <h3 className="product-name">{drink.strDrink}</h3>
+              <div class="product-info">
+
+              </div>
+              <div class="product-btns">
+                <button 
+                  className="desc-button"
+                  onClick={() => dispatch()}
+                >
+                  Læs mere
+                </button>
+                <button 
+                  className="add-button"
+                  onClick={() => dispatch(addToCart())}
+                ></button>
+                
+              </div>
+              
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

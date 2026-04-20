@@ -7,25 +7,12 @@ function LemonadeStand() {
   const dispatch = useDispatch();
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
-      <img style={{ height: '200px' }} src="../images/lemonslogo.png" alt="" />
-      
-      <h2>Aktuel Profit: ${profit}</h2>
+    <div>
+      <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
+        <img style={{ height: '100px' }} src="../images/logo-disc.png" alt="" />
+      </div>
+      <div>
 
-      <div style={{ marginTop: '20px' }}>
-        <button 
-          onClick={() => dispatch(sellLemonade())}
-          style={{ padding: '10px 20px', cursor: 'pointer', marginRight: '10px' }}
-        >
-          Sælg Lemonade (+$5)
-        </button>
-
-        <button 
-          onClick={() => dispatch(buyLemons())}
-          style={{ padding: '10px 20px', cursor: 'pointer' }}
-        >
-          Køb Citroner (-$2)
-        </button>
       </div>
     </div>
   );

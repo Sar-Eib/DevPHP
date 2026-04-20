@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Quantico', cursive;
   line-height: 1.5;
   font-weight: 400;
 
+  
+
   color-scheme: light dark;
-  background-color: #242424;
+  background-color: #000000;
   color: rgba(255, 255, 255, 0.87);
-  background-image: linear-gradient(rgba(187, 187, 187, 0.445), rgba(221, 221, 221, 0.473)), url('../images/lemons.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.781)), url(../images/vinyl-disc.png);
+  background-repeat: repeat;
+  background-position: top;
+  background-size: 200px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,8 +25,7 @@ body {
   margin: 0;
   padding: 0;
   display: block; /* Vigtigt: Fjernet 'flex' og 'place-items' */
-  min-width: 100vw;
-  min-height: 100vh;
+  
 }
 
 /* Dette er beholderen for hele din React app */
@@ -39,7 +40,7 @@ body {
 
 /* Styling af overskrifter og tekst */
 h1 {
-  font-size: 2.5em;
+  font-size: 3rem;
   line-height: 1.1;
   margin-bottom: 20px;
 }
