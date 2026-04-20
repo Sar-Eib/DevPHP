@@ -13,18 +13,13 @@
   grid-template-columns: repeat(1, 1fr);
 }
 
-/* 2 kolonner (Fra 500px og op) */
-@media (min-width: 500px) {
-  .shop-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+
 
 /* 3 kolonner (Fra 768px og op) */
 @media (min-width: 768px) {
   .shop-grid {
     margin: 80px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .shop-title {
     margin-left: 80px;
@@ -35,7 +30,7 @@
 @media (min-width: 992px) {
   .shop-grid {
     margin: 80px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .shop-title {
     margin-left: 80px;
@@ -46,7 +41,7 @@
 @media (min-width: 1200px) {
   .shop-grid {
     margin: 100px;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   .shop-title {
     margin-left: 100px;
@@ -95,7 +90,10 @@
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  width: 50px;
+  width: 100%;
+  @media (min-width: 1500px) {
+    width: 50px;
+  }
   height: 40px;
   margin-top: auto;
   transition: background-color 0.2s;
@@ -119,8 +117,13 @@
 
 .product-btns {
   display: flex;
-  justify-content: space-between;
-  gap: 15px;
+  flex-direction: column;
+  gap: 10px;
+  @media (min-width: 1500px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+  }
 }
 
 
