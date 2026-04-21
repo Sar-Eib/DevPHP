@@ -1,62 +1,33 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/cartSlice';
+import { getProducts } from '../services/api';
+import ProductCard from '../components/ProductCard';
 import './Shop.css';
 
 export default function Shop() {
-  const [drinks, setDrinks] = useState([]);
-  const dispatch = useDispatch();
+  const source = useSelector((state) => state.source.apiSource); // Hent kilden ('wordpress' eller 'laravel')
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=lemon')
-      .then(res => res.json())
-      .then(data => setDrinks(data.drinks || []));
-  }, []);
+    console.log("🔄 Shop-komponenten fetcher nu data fra kilden:", source);
+    getProducts(source).then(data => setProducts(data));
+  }, [source]);
 
   return (
     
     <div className="shop-container">
-      <div style={{ textAlign: 'center', padding: '20px', fontFamily: 'Arial' }}>
-        <img style={{ height: '100px' }} src="../logo-disc.png" alt="Discover logo" />
-      </div>
+      
       <div className="shop-title">
           <h1 >DVD'er</h1>
       </div>
       
-      
       <div>
         <div className="shop-grid">
-        {drinks.map(drink => (
-          <div key={drink.idDrink} className="product-card">
-            <img 
-              src={drink.strDrinkThumb} 
-              alt={drink.strDrink} 
-              className="product-image" 
-            />
-            
-            <div className="product-info">
-              <h3 className="product-name">{drink.strDrink}</h3>
-              <div class="product-info">
-
-              </div>
-              <div class="product-btns">
-                <button 
-                  className="desc-button"
-                  onClick={() => dispatch()}
-                >
-                  Læs mere
-                </button>
-                <button 
-                  className="add-button"
-                  onClick={() => dispatch(addToCart())}
-                ></button>
-                
-              </div>
-              
-            </div>
-          </div>
-        ))}
-      </div>
+          {products.map((item) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

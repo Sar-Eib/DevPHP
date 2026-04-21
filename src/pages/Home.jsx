@@ -1,30 +1,39 @@
-function Discover() {
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setApiSource } from "../redux/sourceSlice"; 
+
+function Home() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleChoice = (source) => {
+    console.log(`🔘 Knap trykket: Du har valgt kilden [${source.toUpperCase()}]`);
+    // Vi tjekker om funktionen findes før vi kalder den
+    if (setApiSource) {
+      dispatch(setApiSource(source));
+      console.log(`🚀 Redux opdateret. Navigerer nu til /shop med ${source} API...`);
+      navigate('/shop');
+    } else {
+      console.error("setApiSource blev ikke fundet! Tjek din sourceSlice.js");
+    }
+  };
 
   return (
-    <div className="discover-container">
-      {/* Centreret Logo */}
-      <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-        {/* Bruger absolut sti fra public mappen */}
-        <img 
-          style={{ height: '150px', marginBottom: '20px' }} 
-          src="/logo-disc.png" 
-          alt="Discover Logo" 
-        />
-        <h1>Velkommen til Discover</h1>
-        <p>Udforsk vores univers</p>
-      </div>
+    <div className="discover-container" style={{ textAlign: 'center', color: 'white', paddingTop: '50px' }}>
+      
+      <h1>Velkommen til Discover</h1>
+      <p>Vælg venligst en API-kilde:</p>
 
-      {/* Knapper uden funktioner (bare design) */}
-      <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
-        <button className="button">
-          Se Produkter
+      <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', marginTop: '20px' }}>
+        <button className="button" onClick={() => handleChoice('wordpress')}>
+          Brug WordPress API
         </button>
-        <button className="button">
-          Om Os
+        <button className="button" onClick={() => handleChoice('laravel')}>
+          Brug Laravel API
         </button>
       </div>
     </div>
   );
 }
 
-export default Discover;
+export default Home;
