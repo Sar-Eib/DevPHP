@@ -4,7 +4,6 @@ export default function Contact() {
     <main className="contact-page">
       <section className="contact-wrapper">
 
-        {/* Venstre side */}
         <div className="contact-left">
           <h1>Contact</h1>
           <p>Lorem ipsum, Lorem ipsum</p>
@@ -30,7 +29,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Højre side */}
         <div className="contact-right">
           <form>
             <div className="form-group">
