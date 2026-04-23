@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
