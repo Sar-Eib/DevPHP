@@ -23,7 +23,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="logo" onClick={closeAll}>
-            <img style={{ height: '60px' }} src="../disc.png" alt="Discover Logo" />
+            <img style={{ height: '60px' }} src="disc.png" alt="Discover Logo" />
         </Link>
 
         <button className="burger-menu" onClick={toggleMenu}>
@@ -61,7 +61,7 @@ export default function Navbar() {
         </div>
 
         <Link to="/cart" className="floating-cart-fab">
-          <img style={{ height: '35px' }} className="cart-icon" src="../cart-shopping-solid-full-black.svg" alt=""/>
+          <img style={{ height: '35px' }} className="cart-icon" src="cart-shopping-solid-full-black.svg" alt=""/>
           {totalItems > 0 && <span className="cart-badge-fab">{totalItems}</span>}
         </Link>
       </div>
