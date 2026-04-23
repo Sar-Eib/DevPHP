@@ -1,0 +1,106 @@
+.discover-container {
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: 768px) {
+        padding: 0 180px;
+   }
+}
+
+.api-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    margin-top: 30px;
+    @media (min-width: 768px) {
+        justify-content: center;
+        flex-direction: row;
+   }
+}
+
+.api-choice .desc-button {
+    width: 80%;
+    @media (min-width: 1280px) {
+        width: 20%;
+   }
+}
+
+.discover-all-wrapper {
+  margin-top: 50px;
+  width: 100%;
+  box-sizing: border-box;
+ 
+}
+
+.preview-section {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+  color: #eee;
+}
+
+.wp-color { color: #21759b; }
+.lv-color { color: #ff2d20; }
+
+/* Selve scroll-containeren */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto; /* Aktiverer vandret scroll */
+  gap: 20px;
+  padding-bottom: 20px; /* Plads til scrollbaren */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Blød scroll på iPhones */
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* TILFØJ DENNE LINJE */
+  align-items: stretch; 
+}
+
+/* Styling af scrollbar i Chrome/Edge/Safari */
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-item {
+  flex: 0 0 280px;
+  transform: scale(0.98);
+  transition: transform 0.2s ease;
+  /* TILFØJ DISSE LINJER */
+  display: flex;
+}
+
+/* Sørg for at selve komponenten indeni fylder det hele */
+.scroll-item > * {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-item:hover {
+  transform: scale(1);
+}

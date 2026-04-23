@@ -21,7 +21,7 @@ const normalizeWordpressProducts = (data) => {
 
   return products.map((item) => ({
     id: item.id,
-    name: `${item.title?.rendered || 'Ingen titel'} (WP)`,
+    name: `${item.title?.rendered || 'Ingen titel'}`,
     image: item._embedded?.['wp:featuredmedia']?.[0]?.source_url || "https://via.placeholder.com/150",
     price: item.acf?.price ? Number(item.acf.price) : 100,
     desc: item.content?.rendered?.replace(/<[^>]*>?/gm, '').slice(0, 100) || 'Ingen beskrivelse fundet.',
@@ -44,7 +44,7 @@ const normalizeLaravelProducts = (data) => {
 
   return products.map((item) => ({
     id: Number(item.id),
-    name: `${item.name} (Laravel)`,
+    name: `${item.name}`,
     image: resolveLaravelImageUrl(item.img_url),
     price: Number(item.price),
     desc: item.desc || 'Ingen beskrivelse fundet.',

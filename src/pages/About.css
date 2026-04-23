@@ -1,0 +1,52 @@
+
+.selling-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.action-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-10px);
+  border-color: #ecee72;
+}
+
+.action-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.about-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.about-btn.primary {
+  background: #ecee72;
+  color: black;
+}
+
+.about-btn.secondary {
+  background: transparent;
+  border: 2px solid #ecee72;
+  color: #ecee72;
+}
+
+.about-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+

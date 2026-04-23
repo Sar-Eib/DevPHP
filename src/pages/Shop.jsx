@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { clearFilter } from '../redux/filterSlice';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
+
 import './Shop.css';
 
 export default function Shop() {
@@ -13,14 +14,21 @@ export default function Shop() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   // Clear filter when source changes
   useEffect(() => {
     dispatch(clearFilter());
   }, [source, dispatch]);
 
   useEffect(() => {
+    setIsLoading(true); // True hver gang vi fetcher
     console.log("🔄 Shop-komponenten fetcher nu data fra kilden:", source);
-    getProducts(source).then(data => setProducts(data));
+    
+    getProducts(source).then(data => {
+      setProducts(data);
+      setIsLoading(false); // Her vises noget
+    });
   }, [source]);
 
   useEffect(() => {
@@ -57,15 +65,32 @@ export default function Shop() {
       </div>
       
       <div>
-        <div className="shop-grid">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((item) => (
-              <ProductCard key={item.id} product={item} />
-            ))
+        <div className="shop-content-wrapper">
+          {isLoading ? (
+            // Loading-visning
+            <div className="shop-status-message">
+              <p className="loading-text">Henter produkter...</p>
+            </div>
+          ) : filteredProducts.length > 0 ? (
+            // Selve griddet
+            <div className="shop-grid">
+              {filteredProducts.map((item) => (
+                <ProductCard key={item.id} product={item} />
+              ))}
+            </div>
           ) : (
-            <p style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '40px' }}>
-              Ingen produkter fundet i denne kategori
-            </p>
+            // Fejlmeddelelse
+            <div className="shop-status-message">
+              <p className='no-products'>
+                Ingen produkter fundet i denne kategori
+              </p>
+              <button 
+                className='desc-button' 
+                onClick={() => dispatch(clearFilter())}
+              >
+                Se alle produkter
+              </button>
+            </div>
           )}
         </div>
       </div>
