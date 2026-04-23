@@ -1,5 +1,27 @@
 # React + Vite
 
+## API Setup (Railway)
+
+This app is configured to read the Laravel API base URL from `VITE_API_URL`.
+
+1. Copy `.env.example` to `.env.local`.
+2. Keep this value:
+
+```env
+VITE_API_URL=https://php-api-production-9e90.up.railway.app/api
+```
+
+3. Start the app:
+
+```bash
+npm install
+npm run dev
+```
+
+The frontend will fetch products from:
+
+`https://php-api-production-9e90.up.railway.app/api/products`
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

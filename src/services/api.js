@@ -1,5 +1,9 @@
 //const WP_URL = "https://din-wp-side.dk/wp-json/wp/v2/posts";
-const LARAVEL_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
+const WORDPRESS_TEST_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
+const LARAVEL_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE_URL ||
+  'http://127.0.0.1:8000/api';
 
 //export const getProducts = async (source) => {
   //const url = source === 'wordpress' ? WP_URL : LARAVEL_URL;
@@ -63,7 +67,9 @@ const normalizeWordpressProducts = (data) => {
 };
 
 const normalizeLaravelProducts = (data) => {
-  return (data || []).map((item) => ({
+  const rows = Array.isArray(data) ? data : data?.data || [];
+
+  return rows.map((item) => ({
     id: Number(item.id),
     name: `${item.name} (Laravel)`,
     image: item.img_url,
