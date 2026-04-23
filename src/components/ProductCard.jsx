@@ -1,9 +1,15 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../redux/cartSlice';
 import '../pages/Shop.css';
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleReadMore = () => {
+    navigate(`/product/${product.id}`);
+  };
 
   return (
     <div className="product-card">
@@ -19,7 +25,7 @@ function ProductCard({ product }) {
         <div className="product-btns">
           <button 
             className="desc-button"
-            onClick={() => console.log("Læs mere om:", product.id)}
+            onClick={handleReadMore}
           >
             Læs mere
           </button>

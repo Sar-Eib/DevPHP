@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setApiSource } from "../redux/sourceSlice"; 
+import { setApiSource } from "../redux/sourceSlice";
+import { clearFilter } from "../redux/filterSlice";
 
 function Home() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Home() {
     // Vi tjekker om funktionen findes før vi kalder den
     if (setApiSource) {
       dispatch(setApiSource(source));
+      dispatch(clearFilter()); // Clear any active filters when switching API
       console.log(`🚀 Redux opdateret. Navigerer nu til /shop med ${source} API...`);
       navigate('/shop');
     } else {
