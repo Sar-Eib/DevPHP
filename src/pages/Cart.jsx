@@ -5,6 +5,7 @@ import CartItem from '../components/CartItem';
 export default function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const totalPrice = cartItems.reduce((total, item) => total + Number(item.price) * item.quantity, 0);
 
   const handleQuantityChange = (id, currentQty, change) => {
     const newQty = currentQty + change;
@@ -32,6 +33,22 @@ export default function Cart() {
               />
             ))}
           </ul>
+          <div style={{ marginTop: '30px', padding: '20px', borderRadius: '8px', border: '1px solid #eee' }}>
+            <h3>Checkout Oversigt</h3>
+            <p>Total antal produkter: {cartItems.reduce((total, item) => total + item.quantity, 0)}</p>
+            <p>Samlet pris: {totalPrice} kr.</p>
+            <button style={{ 
+              width: '100%', 
+              padding: '10px', 
+              backgroundColor: '#4CAF50', 
+              color: 'white', 
+              border: 'none', 
+              fontSize: '1rem',
+              cursor: 'pointer'
+            }}>
+              Gå til betaling
+            </button>
+          </div>
         </>
       )}
     </div>

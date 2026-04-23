@@ -1,7 +1,8 @@
 
 const WORDPRESS_BASE_URL = "https://wordpress-api-production.up.railway.app/wp-json/wp/v2/products?_embed";
 
-const LARAVEL_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
+const LARAVEL_BASE_URL = "https://php-api-production-9e90.up.railway.app/api";
+const LARAVEL_LOCAL_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api'
 
 const normalizeWordpressProducts = (data) => {
   const products = Array.isArray(data) ? data : [];
@@ -16,7 +17,16 @@ const normalizeWordpressProducts = (data) => {
 };
 
 const normalizeLaravelProducts = (data) => {
-  return (data || []).map((item) => ({
+
+  const products = Array.isArray(data) ? data : (data?.data || []);
+
+  if (products.length === 0) {
+    console.log("⚠️ Laravel Normalizer: Ingen produkter fundet i svaret", data);
+  } else {
+    console.log(`✅ Laravel Normalizer: Mapper ${products.length} produkter`);
+  }
+
+  return products.map((item) => ({
     id: Number(item.id),
     name: `${item.name} (Laravel)`,
     image: item.img_url,
