@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategory } from '../redux/filterSlice';
 import './Navbar.css';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);  
+  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
   const items = useSelector((state) => state.cart?.items || []);
   const totalItems = items.reduce((sum, item) => sum + (item.quantity || 0), 0);
   const toggleMenu = () => setIsOpen(!isOpen);
 
   // Lukker menuen helt (bruges ved klik på links)
   const closeAll = () => setIsOpen(false);
+
+  const handleCategoryClick = (category) => {
+    dispatch(setCategory(category));
+    closeAll();
+  };
 
   return (
     <nav className="navbar">
@@ -27,12 +34,12 @@ export default function Navbar() {
           
           {/* SHOP DROPDOWN */}
           <div className="nav-item dropdown">
-            <Link to="/shop" className="nav-link" onClick={closeAll}>Shop</Link>
+            <Link to="/shop" className="nav-link" onClick={() => { dispatch(setCategory(null)); closeAll(); }}>Shop</Link>
             <div className="dropdown-menu">
-              <Link to="/shop/film" onClick={closeAll}>Film</Link>
-              <Link to="/shop/spil" onClick={closeAll}>Spil</Link>
-              <Link to="/shop/cd" onClick={closeAll}>CD</Link>
-              <Link to="/shop/lp" onClick={closeAll}>LP</Link>
+              <Link to="/shop" onClick={() => handleCategoryClick('Film')}>Film</Link>
+              <Link to="/shop" onClick={() => handleCategoryClick('Spil')}>Spil</Link>
+              <Link to="/shop" onClick={() => handleCategoryClick('CD')}>CD</Link>
+              <Link to="/shop" onClick={() => handleCategoryClick('LP')}>LP</Link>
             </div>
           </div>
 
