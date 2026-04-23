@@ -1,39 +1,56 @@
-## API Setup (Railway)
+# WordPress and Laravel API Setup
 
-This app is configured to read the Laravel API base URL from `VITE_API_URL`.
+This app can load products from two different backends:
 
-1. Copy `.env.example` to `.env.local`.
-2. Keep this value:
+1. WordPress API for the WordPress product feed.
+2. Laravel API for the Laravel product feed.
 
-```env
-VITE_API_URL=https://php-api-production-9e90.up.railway.app/api
-```
+On the home screen, choose which API to use. The shop page then fetches and normalizes the response from the selected source.
 
-3. Start the app:
+## API Endpoints
+
+WordPress products:
+
+`https://wordpress-api-production.up.railway.app/wp-json/wp/v2/products?_embed`
+
+Laravel products:
+
+`https://php-api-production-9e90.up.railway.app/api/products`
+
+## Local Setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-The frontend will fetch products from:
+Copy `.env.example` to `.env.local` and set `VITE_API_URL` to your Laravel API base URL.
 
-`https://php-api-production-9e90.up.railway.app/api/products`
+```env
+VITE_API_URL=http://127.0.0.1:8000/api
+```
 
+If your Laravel backend runs somewhere else, replace that value with the correct host.
 
-# React + Vite
+## Response Shape
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The app converts both APIs into the same product format before rendering:
 
-Currently, two official plugins are available:
+```text
+{
+  id,
+  name,
+  image,
+  price,
+  desc
+}
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+WordPress products use `title`, `content`, `acf.price`, and embedded featured media.
+Laravel products use `id`, `name`, `img_url`, `price`, and `desc`.
 
-## React Compiler
+## Notes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- The WordPress API request uses `_embed` so the featured image can be read from the embedded media response.
+- The Laravel API is fetched from the `/products` endpoint.
+- The app defaults to the Laravel source unless the user selects WordPress from the home page.

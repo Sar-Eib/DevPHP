@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../redux/cartSlice';
+import { useSelector } from 'react-redux';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import './Shop.css';

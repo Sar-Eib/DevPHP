@@ -1,8 +1,7 @@
 
 const WORDPRESS_BASE_URL = "https://wordpress-api-production.up.railway.app/wp-json/wp/v2/products?_embed";
 
-const LARAVEL_BASE_URL = "https://php-api-production-9e90.up.railway.app/api";
-const LARAVEL_LOCAL_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api'
+const LARAVEL_BASE_URL = import.meta.env.VITE_API_URL || "https://php-api-production-9e90.up.railway.app/api";
 
 const normalizeWordpressProducts = (data) => {
   const products = Array.isArray(data) ? data : [];
