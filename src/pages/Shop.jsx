@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { clearFilter } from '../redux/filterSlice';
+import { useSelector } from 'react-redux';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import './Shop.css';
