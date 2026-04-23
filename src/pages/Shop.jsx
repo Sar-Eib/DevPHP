@@ -56,7 +56,7 @@ export default function Shop() {
     <div className="shop-container">
       
       <div className="shop-title">
-          <h1>{selectedCategory ? `${selectedCategory}` : 'Alle produkter'}</h1>
+          <h1 className="text-5xl leading-tight">{selectedCategory ? `${selectedCategory}` : 'Alle produkter'}</h1>
           {selectedCategory && (
             <p style={{ color: '#666', marginTop: '10px' }}>
               {filteredProducts.length} produkt{filteredProducts.length !== 1 ? 'er' : ''}
