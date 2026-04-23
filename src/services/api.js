@@ -1,5 +1,5 @@
 //const WP_URL = "https://din-wp-side.dk/wp-json/wp/v2/posts";
-const LARAVEL_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
+const LARAVEL_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
 
 //export const getProducts = async (source) => {
   //const url = source === 'wordpress' ? WP_URL : LARAVEL_URL;
@@ -50,48 +50,47 @@ const LARAVEL_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/
  // }
 //};
 
-const LARAVEL_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
+const normalizeWordpressProducts = (data) => {
+  const drinks = data?.drinks || [];
 
-export const getProducts = async (source) => {
-  let url = "";
-  
-  if (source === 'wordpress') {
-    // Test-cocktail (eller senere dit WP-link)
-    url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
-  } else {
-    // Lukas' sti til Laravel
-    url = `${LARAVEL_BASE_URL}/products`;
-  }
+  return drinks.map((drink) => ({
+    id: Number(drink.idDrink),
+    name: `${drink.strDrink} (WP)`,
+    image: drink.strDrinkThumb,
+    price: 100,
+    desc: drink.strInstructions || 'Ingen beskrivelse fundet.',
+  }));
+};
+
+const normalizeLaravelProducts = (data) => {
+  return (data || []).map((item) => ({
+    id: Number(item.id),
+    name: `${item.name} (Laravel)`,
+    image: item.img_url,
+    price: Number(item.price),
+    desc: item.desc || 'Ingen beskrivelse fundet.',
+  }));
+};
+
+export const getProducts = async (source = 'laravel') => {
+  const isWordpressSource = source === 'wordpress';
+  const url = isWordpressSource ? WORDPRESS_TEST_URL : `${LARAVEL_BASE_URL}/products`;
 
   try {
     const response = await fetch(url);
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`Fejl: ${response.status} - ${errorText.slice(0, 100)}`);
+      throw new Error(`Fejl: ${response.status} ${response.statusText} - ${errorText.slice(0, 120)}`);
     }
 
     const data = await response.json();
 
-    // Mapping logik
-    if (source === 'wordpress') {
-      return data.drinks.map((drink) => ({
-        id: drink.idDrink,
-        name: drink.strDrink + " (WP)",
-        image: drink.strDrinkThumb,
-        price: "100 kr."
-      }));
-    } else {
-      //Indsæt de korrekte data ift mapping
-      return data.map((item) => ({
-        id: item.id,
-        name: item.name + " (Laravel)", // Eller hvad feltet er kaldt i databasen
-        image: item.image_url || item.image, // Indsæt korrekt billed-sti
-        price: item.price + " kr."
-      }));
-    }
+    return isWordpressSource
+      ? normalizeWordpressProducts(data)
+      : normalizeLaravelProducts(data);
   } catch (error) {
-    console.error("API Error:", error);
-    return []; // Returner en tom liste så appen ikke crasher ved fejl
+    console.error('API Error:', error);
+    return [];
   }
 };

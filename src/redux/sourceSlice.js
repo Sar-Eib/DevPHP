@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const sourceSlice = createSlice({
   name: 'source',
   initialState: {
-    apiSource: 'wordpress',
+    apiSource: 'laravel',
   },
   reducers: {
     setApiSource: (state, action) => {
