@@ -32,6 +32,18 @@ VITE_API_URL=http://127.0.0.1:8000/api
 
 If your Laravel backend runs somewhere else, replace that value with the correct host.
 
+## Docker Setup
+
+Run the frontend and the prebuilt WordPress image together with:
+
+```bash
+docker compose up --build
+```
+
+The frontend will be available on `http://localhost:5173/DevPHP`, and WordPress will be exposed on `http://localhost:8080`.
+
+The frontend will keep using the hosted Laravel API unless you override `VITE_API_URL` in your environment.
+
 ## Response Shape
 
 The app converts both APIs into the same product format before rendering:
