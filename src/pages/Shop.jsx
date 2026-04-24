@@ -16,6 +16,19 @@ export default function Shop() {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const formatCategoryTitle = (category) => {
+  if (!category) return 'Alle produkter';
+  
+  // Specielle ord der skal være helt store
+  const uppers = ['lp', 'cd'];
+  if (uppers.includes(category.toLowerCase())) {
+    return category.toUpperCase();
+  }
+  
+  // Gør kun første bogstav stort (Film, Spil, Serier)
+  return category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+};
+
   // Clear filter when source changes
   useEffect(() => {
     dispatch(clearFilter());
@@ -32,31 +45,28 @@ export default function Shop() {
   }, [source]);
 
   useEffect(() => {
-    if (selectedCategory) {
-      // Filter products by category
-      const filtered = products.filter(product => {
-        // Match category from product name (e.g., "Nordlys (Laravel)" or "Product (WP)")
-        // If the product has a type field, use that instead
-        if (product.type) {
-          return product.type.name === selectedCategory;
-        }
-        // Fallback: check if name matches category pattern
-        return product.name.toLowerCase().includes(selectedCategory.toLowerCase());
-      });
-      setFilteredProducts(filtered);
-      console.log(`📌 Filtrering efter: ${selectedCategory}, fundet: ${filtered.length}`);
-    } else {
-      setFilteredProducts(products);
-      console.log("🔄 Viser alle produkter");
-    }
-  }, [selectedCategory, products]);
+  if (selectedCategory) {
+    const filtered = products.filter(product => {
+      if (product.type && product.type.name) {
+        return product.type.name.toLowerCase() === selectedCategory.toLowerCase();
+      }
+      return product.name?.toLowerCase().includes(selectedCategory.toLowerCase());
+    });
+    
+    setFilteredProducts(filtered);
+    console.log(`📌 Filtrering efter: ${selectedCategory}, fundet: ${filtered.length}`);
+  } else {
+    setFilteredProducts(products);
+    console.log("🔄 Viser alle produkter");
+  }
+}, [selectedCategory, products]);
 
   return (
     
     <div className="shop-container">
       
       <div className="shop-title">
-          <h1 className="text-5xl leading-tight">{selectedCategory ? `${selectedCategory}` : 'Alle produkter'}</h1>
+          <h1 className="text-5xl leading-tight">{formatCategoryTitle(selectedCategory)}</h1>
           {selectedCategory && (
             <p style={{ color: '#666', marginTop: '10px' }}>
               {filteredProducts.length} produkt{filteredProducts.length !== 1 ? 'er' : ''}
