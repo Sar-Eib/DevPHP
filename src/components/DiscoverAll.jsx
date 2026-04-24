@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getProducts } from '../services/api';
-import ProductCard from '../components/ProductCard';
+import ProductTeaser from '../components/ProductTeaser';
 import '../pages/Home.css'; // Vi opretter denne CSS fil
 
 function DiscoverAll() {
@@ -35,7 +35,7 @@ function DiscoverAll() {
             <div className="horizontal-scroll">
               {wpPreview.map(product => (
                 <div key={`wp-${product.id}`} className="scroll-item">
-                  <ProductCard product={product} />
+                  <ProductTeaser product={product} />
                 </div>
               ))}
             </div>
@@ -49,7 +49,7 @@ function DiscoverAll() {
             <div className="horizontal-scroll">
               {lvPreview.map(product => (
                 <div key={`lv-${product.id}`} className="scroll-item">
-                  <ProductCard product={product} />
+                  <ProductTeaser product={product} />
                 </div>
               ))}
             </div>

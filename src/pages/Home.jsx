@@ -38,7 +38,7 @@ function Home() {
           </p>
         </div>
       </div>
-      <h1 className="text-5xl bb-5 leading-tight">Velkommen til Discover</h1>
+      <h1 className="text-5xl pb-5 leading-tight">Velkommen til Discover</h1>
       <p>Denne forside fungerer som en oversigt og indgangsvinkel til vores multi-API projekt med forskellige backend-arkitekturer.</p>
       <p>Vælg venligst en API-kilde:</p>
 
