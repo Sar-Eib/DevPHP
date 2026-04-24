@@ -9,7 +9,7 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     setCategory: (state, action) => {
-      state.selectedCategory = action.payload;
+      state.selectedCategory = action.payload ? action.payload.toLowerCase() : null;
     },
     clearFilter: (state) => {
       state.selectedCategory = null;

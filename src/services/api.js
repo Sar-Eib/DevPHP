@@ -23,8 +23,11 @@ const normalizeWordpressProducts = (data) => {
     id: item.id,
     name: `${item.title?.rendered || 'Ingen titel'}`,
     image: item._embedded?.['wp:featuredmedia']?.[0]?.source_url || "https://via.placeholder.com/150",
-    price: item.acf?.price ? Number(item.acf.price) : 100,
-    desc: item.content?.rendered?.replace(/<[^>]*>?/gm, '').slice(0, 100) || 'Ingen beskrivelse fundet.',
+    price: item.acf?.pris ? Number(item.acf.pris) : 100,
+    desc: item.acf?.beskrivelse 
+      ? item.acf.beskrivelse.replace(/<[^>]*>?/gm, '').slice(0, 100)
+      : (item.content?.rendered?.replace(/<[^>]*>?/gm, '').slice(0, 100) || 'Ingen beskrivelse fundet.'),
+    //desc: item.content?.rendered?.replace(/<[^>]*>?/gm, '').slice(0, 100) || 'Ingen beskrivelse fundet.',
     type: item.acf?.product_type ? {
       id: 1,
       name: item.acf.product_type.charAt(0).toUpperCase() + item.acf.product_type.slice(1) // Capitalize first letter

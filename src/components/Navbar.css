@@ -112,7 +112,6 @@
     border: 2px solid #ffffff;
   }
 
-  /* Dine eksisterende burgermenu-indstillinger herunder... */
   .burger-menu {
     display: block;
   }
@@ -121,13 +120,13 @@
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 77px; /* Juster så den passer med din navbars højde */
+  top: 70px; 
   right: 0;
   width: 100%;
   background-color: #333;
   padding: 20px 0;
-  z-index: 1500; /* Tilføj denne, så den ligger over siden, men under FAB */
-  box-shadow: -9px 13px 13px 0 rgba(0,0,0,0.3); /* Valgfrit: giver en flot skygge når menuen er åben */
+  z-index: 1500;
+  box-shadow: -9px 13px 13px 0 rgba(0,0,0,0.3);
 }
 
 .nav-links.open {
