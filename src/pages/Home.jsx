@@ -40,14 +40,14 @@ function Home() {
       </div>
       <h1 className="text-5xl pb-5 leading-tight">Velkommen til Discover</h1>
       <p>Denne forside fungerer som en oversigt og indgangsvinkel til vores multi-API projekt med forskellige backend-arkitekturer.</p>
-      <p>Vælg venligst en API-kilde:</p>
+      <p className="mt-5">Vælg venligst en API-kilde:</p>
 
       <div className="api-choice">
         <button className="rounded text-black font-bold bg-[#ecee72] w-full md:w-[80%] lg:w-[20%] w-lg-20 hover:bg-black hover:border-[#ecee72] hover:text-[#ecee72] py-2.5 px-5" onClick={() => handleChoice('wordpress')}>
-          Brug WordPress API
+          WordPress
         </button>
         <button className="rounded text-black font-bold bg-[#ecee72] w-full md:w-[80%] lg:w-[20%] w-lg-20 hover:bg-black hover:border-[#ecee72] hover:text-[#ecee72] py-2.5 px-5" onClick={() => handleChoice('laravel')}>
-          Brug Laravel API
+          Laravel
         </button>
       </div>
 
