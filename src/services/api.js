@@ -24,14 +24,22 @@ const normalizeWordpressProducts = (data) => {
     name: `${item.title?.rendered || 'Ingen titel'}`,
     image: item._embedded?.['wp:featuredmedia']?.[0]?.source_url || "https://via.placeholder.com/150",
     price: item.acf?.pris ? Number(item.acf.pris) : 100,
-    desc: item.acf?.beskrivelse 
+    desc: item.acf?.beskrivelse
       ? item.acf.beskrivelse.replace(/<[^>]*>?/gm, '').slice(0, 100)
       : (item.content?.rendered?.replace(/<[^>]*>?/gm, '').slice(0, 100) || 'Ingen beskrivelse fundet.'),
-    //desc: item.content?.rendered?.replace(/<[^>]*>?/gm, '').slice(0, 100) || 'Ingen beskrivelse fundet.',
     type: item.acf?.product_type ? {
       id: 1,
       name: item.acf.product_type.charAt(0).toUpperCase() + item.acf.product_type.slice(1) // Capitalize first letter
     } : null,
+    stock: item.acf?.lager ? Number(item.acf.lager) : null,
+    release: item.acf?.release_date || null,
+    grade: Array.isArray(item.acf?.stand) && item.acf.stand.length > 0
+      ? { id: 1, name: item.acf.stand[0] }
+      : null,
+    digital: typeof item.acf?.er_digital === 'boolean'
+      ? { id: item.acf.er_digital ? 1 : 2, name: item.acf.er_digital ? 'Ja' : 'Nej' }
+      : null,
+    source: 'wordpress',
   }));
 };
 
@@ -52,6 +60,11 @@ const normalizeLaravelProducts = (data) => {
     price: Number(item.price),
     desc: item.desc || 'Ingen beskrivelse fundet.',
     type: item.type || null, // Preserve type for filtering
+    stock: typeof item.stock === 'number' ? item.stock : null,
+    release: item.release || null,
+    grade: item.grade || null,
+    digital: item.digital || null,
+    source: 'laravel',
   }));
 };
 
